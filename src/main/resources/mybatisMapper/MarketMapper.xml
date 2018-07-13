@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo1.dao.MarketMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo1.bean.Market">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="market_name" jdbcType="VARCHAR" property="marketName" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="market_coordinate_x" jdbcType="DECIMAL" property="marketCoordinateX" />
+    <result column="market_coordinate_y" jdbcType="DECIMAL" property="marketCoordinateY" />
+    <result column="market_scope" jdbcType="INTEGER" property="marketScope" />
+    <result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, market_name, status, market_coordinate_x, market_coordinate_y, market_scope, 
+    address_detail, create_date, modify_date, admin_id, admin_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from qy_market
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from qy_market
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo1.bean.Market">
+    insert into qy_market (id, market_name, status, 
+      market_coordinate_x, market_coordinate_y, market_scope, 
+      address_detail, create_date, modify_date, 
+      admin_id, admin_name)
+    values (#{id,jdbcType=INTEGER}, #{marketName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{marketCoordinateX,jdbcType=DECIMAL}, #{marketCoordinateY,jdbcType=DECIMAL}, #{marketScope,jdbcType=INTEGER}, 
+      #{addressDetail,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo1.bean.Market">
+    insert into qy_market
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="marketName != null">
+        market_name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="marketCoordinateX != null">
+        market_coordinate_x,
+      </if>
+      <if test="marketCoordinateY != null">
+        market_coordinate_y,
+      </if>
+      <if test="marketScope != null">
+        market_scope,
+      </if>
+      <if test="addressDetail != null">
+        address_detail,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null">
+        #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="marketCoordinateX != null">
+        #{marketCoordinateX,jdbcType=DECIMAL},
+      </if>
+      <if test="marketCoordinateY != null">
+        #{marketCoordinateY,jdbcType=DECIMAL},
+      </if>
+      <if test="marketScope != null">
+        #{marketScope,jdbcType=INTEGER},
+      </if>
+      <if test="addressDetail != null">
+        #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo1.bean.Market">
+    update qy_market
+    <set>
+      <if test="marketName != null">
+        market_name = #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="marketCoordinateX != null">
+        market_coordinate_x = #{marketCoordinateX,jdbcType=DECIMAL},
+      </if>
+      <if test="marketCoordinateY != null">
+        market_coordinate_y = #{marketCoordinateY,jdbcType=DECIMAL},
+      </if>
+      <if test="marketScope != null">
+        market_scope = #{marketScope,jdbcType=INTEGER},
+      </if>
+      <if test="addressDetail != null">
+        address_detail = #{addressDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo1.bean.Market">
+    update qy_market
+    set market_name = #{marketName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      market_coordinate_x = #{marketCoordinateX,jdbcType=DECIMAL},
+      market_coordinate_y = #{marketCoordinateY,jdbcType=DECIMAL},
+      market_scope = #{marketScope,jdbcType=INTEGER},
+      address_detail = #{addressDetail,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      admin_name = #{adminName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getAllList" resultMap="BaseResultMap">
+    select * from qy_market
+  </select>
+</mapper>

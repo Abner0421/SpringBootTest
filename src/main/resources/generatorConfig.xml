@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>  
+    <context id="testTables" targetRuntime="MyBatis3">  
+        <commentGenerator>  
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->  
+            <property name="suppressAllComments" value="true" />  
+        </commentGenerator>  
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"  
+            connectionURL="jdbc:mysql://192.168.1.72:8336/qy_cloud"   
+            userId="root"  
+            password="wjkj001">  
+        </jdbcConnection>   
+  
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和   
+            NUMERIC 类型解析为java.math.BigDecimal -->  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="true" />  
+        </javaTypeResolver>  
+  
+        <!-- targetProject:生成PO类的位置 -->  
+        <javaModelGenerator targetPackage="com.example.demo1.bean"  
+            targetProject="SpringBootTest/src/main/java">  
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->  
+            <property name="enableSubPackages" value="false" />  
+            <!-- 从数据库返回的值被清理前后的空格 -->  
+            <property name="trimStrings" value="true" />  
+        </javaModelGenerator>  
+        <!-- targetProject:mapper映射文件生成的位置 -->  
+        <sqlMapGenerator targetPackage="mybatisMapper"   
+            targetProject="SpringBootTest/src/main/resources">  
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->  
+            <property name="enableSubPackages" value="false" />  
+        </sqlMapGenerator>  
+        <!-- targetPackage：mapper接口生成的位置 -->  
+        <javaClientGenerator type="XMLMAPPER"  
+            targetPackage="com.example.demo1.dao"   
+            targetProject="SpringBootTest/src/main/java">  
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->  
+            <property name="enableSubPackages" value="false" />  
+        </javaClientGenerator>  
+        <!-- 指定数据库表 -->  
+        <!--<table tableName="items"></table> -->  
+        <!-- <table tableName="qy_admin" schema="general" domainObjectName="Admin"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_address" schema="general" domainObjectName="Address"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_city" schema="general" domainObjectName="City"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_code" schema="general" domainObjectName="Code"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_county" schema="general" domainObjectName="County"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_device" schema="general" domainObjectName="Device"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_device_market" schema="general" domainObjectName="DeviceMarket"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_iot_info" schema="general" domainObjectName="IotInfo"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_issued_table" schema="general" domainObjectName="IssuedTable"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_items" schema="general" domainObjectName="Items"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_items_child" schema="general" domainObjectName="ItemsChild"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_jinhuo" schema="general" domainObjectName="JinHuo"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_keyposition" schema="general" domainObjectName="KeyPosition"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  -->
+	    <table tableName="qy_market" schema="general" domainObjectName="Market"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	<!-- <table tableName="qy_market_address" schema="general" domainObjectName="MarketAddress"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_market_statistics_day" schema="general" domainObjectName="MarketStatisticsDay"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_menu" schema="general" domainObjectName="Menu"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_province" schema="general" domainObjectName="Province"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_report_table" schema="general" domainObjectName="ReportTable"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_role" schema="general" domainObjectName="NewRole"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_role_menu" schema="general" domainObjectName="NewRoleMenu"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_sale" schema="general" domainObjectName="Sale"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_statistics_day" schema="general" domainObjectName="StatisticsDay"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_statistics_day_detail" schema="general" domainObjectName="StatisticsDayDetail"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_sysparameter_table" schema="general" domainObjectName="SysparameterTable"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_vendor" schema="general" domainObjectName="Vendor"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_vendor_device" schema="general" domainObjectName="VendorDevice"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>  
+	    <table tableName="qy_warrning" schema="general" domainObjectName="Warrning"
+	    enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+	    enableSelectByExample="false" selectByExampleQueryId="false"></table>   -->
+    </context>  
+</generatorConfiguration>  
